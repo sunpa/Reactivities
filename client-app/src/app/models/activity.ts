@@ -10,8 +10,39 @@ export interface Activity {
     venue: string;
     hostUsername?: string;
     isCancelled?: boolean;
-    isGoing?: boolean;
-    isHost?: boolean;
-    attendees?: Profile[];
+    isGoing: boolean;
+    isHost: boolean;
     host?: Profile;
+    attendees: Profile[];
+}
+
+export class Activity implements Activity {
+    constructor(init?: ActivityFormValues) {
+        Object.assign(this, init);
+    }
+}
+
+//And what we'll do is we're going to create a class for activity, form values, and by creating a class,
+//this will give us an opportunity to use a constructor to initialize certain values.
+//When we do pass an activity, objects from our API into the constructor of this class.
+export class ActivityFormValues {
+    id?: string = undefined;
+    title: string = '';
+    category: string = '';
+    description: string = '';
+    date: Date | null = null;
+    city: string = '';
+    venue: string = '';
+
+    constructor(activity?: ActivityFormValues) {
+        if (activity) {
+            this.id = activity.id;
+            this.title = activity.title;
+            this.category = activity.category;
+            this.description = activity.description;
+            this.date = activity.date;
+            this.venue = activity.venue;
+            this.city = activity.city;
+        }
+    }
 }
