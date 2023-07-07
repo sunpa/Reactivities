@@ -1,5 +1,5 @@
 using System.Security.Claims;
-using Application.interfaces;
+using Application.Interfaces;
 using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Security
@@ -9,7 +9,7 @@ namespace Infrastructure.Security
         private readonly IHttpContextAccessor _httpContextAccessor;
         public UserAccessor(IHttpContextAccessor httpContextAccessor)
         {
-            _httpContextAccessor = httpContextAccessor;            
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public string GetUserName()
